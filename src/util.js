@@ -4,7 +4,7 @@
 
 let isString = require('lodash.isstring');
 let isArray = require('lodash.isarray');
-let each = require('lodash.forEach');
+let each = require('lodash.foreach');
 let Levenshtein = require('levenshtein');
 
 class GeneratorUtil {

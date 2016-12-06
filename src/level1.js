@@ -3,7 +3,7 @@
  * 主要通过<title>和文章内容进行匹配，找出相似度最高的段落
  */
 
-let each = require('lodash.forEach');
+let each = require('lodash.foreach');
 let GeneratorUtil = require('./util');
 let plusElement = /^(h[1-5])$/;
 

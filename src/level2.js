@@ -3,7 +3,7 @@
  * 找出content内部的父级，确定content内容的位置
  */
 
-let each = require('lodash.forEach');
+let each = require('lodash.foreach');
 let filter = require('lodash.filter');
 let map = require('lodash.map');
 let sortBy = require('lodash.sortby');
