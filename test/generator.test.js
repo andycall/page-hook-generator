@@ -82,6 +82,7 @@ describe('Auto Get Title Hook', () => {
                     let titleSelector = level1Result.title;
                     let date = level1Result.date;
 
+                    console.log(date);
                     // level3($, title, content);
                     assert.equal(titleSelector, result.title);
                     assert.equal(contentSelector, result.content);

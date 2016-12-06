@@ -22,6 +22,20 @@ class Level1 extends GeneratorUtil {
         return this.getSimilarOfTwoString(searchedTitle, docTitle);
     }
 
+    normalizeTime (date) {
+        date = parseInt(date);
+
+        if (!date) {
+            return '00'
+        }
+
+        if (date < 10) {
+            return `0${date}`
+        }
+
+        return date;
+    }
+
     searchDateFromTitleNearBy(titleElement) {
         let dateString = null;
 
@@ -30,26 +44,16 @@ class Level1 extends GeneratorUtil {
 
             if (this.dateReg.test(text)) {
                 let pattern = this.dateReg.exec(text);
-                let year = pattern[1];
-                let month = pattern[2];
-                let day = pattern[3];
-                let hour = pattern[4];
-                let minute = pattern[5];
-                let second = pattern[6];
+                let year = this.normalizeTime(pattern[1]);
+                let month = this.normalizeTime(pattern[2]);
+                let day = this.normalizeTime(pattern[3]);
+                let hour = this.normalizeTime(pattern[4]);
+                let minute = this.normalizeTime(pattern[5]);
+                let second = this.normalizeTime(pattern[6]);
 
-                dateString = `${year}-${month}-${day}`;
 
-                if (hour) {
-                    dateString += ` ${hour}`
-                }
 
-                if (minute) {
-                    dateString += `:${minute}`
-                }
-
-                if (second) {
-                    dateString += `:${second}`
-                }
+                dateString = `${year}-${month}-${day} ${hour}:${minute}:${second}`;
             }
 
             titleElement = titleElement.parent;
@@ -93,8 +97,6 @@ class Level1 extends GeneratorUtil {
 
             if (percentage < minimum) {
                 minimum = percentage;
-
-                console.log(percentage, elementText, docTitle);
 
                 titleElement = ele;
                 titleSelector = self.getNodeDriver(ele.parent);
