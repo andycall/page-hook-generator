@@ -35,7 +35,7 @@ function getPageContent(item) {
                     }
                 }
                 else {
-                    date = date.toString();
+                    data = data.toString();
                 }
 
                 if (item.parseJS) {
