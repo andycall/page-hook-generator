@@ -14,6 +14,7 @@ class Level1 extends GeneratorUtil {
 
         this.body = options.$('body')[0] || options.$('html')[0];
         this.docTitle = options.$('title').text().trim();
+        this.titleSplit = /\||-|@/;
         this.date = null
     }
 
@@ -69,8 +70,21 @@ class Level1 extends GeneratorUtil {
         each(allElements, ele => {
             let nodeParentName = ele.parent.name;
             let elementText = ele.data.trim();
+            let percentage = null;
 
-            let percentage = self.validateTitle(elementText, docTitle);
+            if (this.titleSplit.test(docTitle)) {
+                let titleChunk = docTitle.split(this.titleSplit);
+
+                percentage = titleChunk.reduce((total, next, index) => {
+                    let chunk = titleChunk[index];
+                    let per = this.validateTitle(elementText, chunk);
+
+                    return total + per / (index + 1);
+                }, 0);
+            }
+            else {
+                percentage = self.validateTitle(elementText, docTitle);
+            }
 
             if (plusElement.test(nodeParentName)) {
                 // 优先找出那些h[1-3]标签
@@ -79,6 +93,8 @@ class Level1 extends GeneratorUtil {
 
             if (percentage < minimum) {
                 minimum = percentage;
+
+                console.log(percentage, elementText, docTitle);
 
                 titleElement = ele;
                 titleSelector = self.getNodeDriver(ele.parent);

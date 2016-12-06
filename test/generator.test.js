@@ -70,7 +70,6 @@ function getPageContent(item) {
 describe('Auto Get Title Hook', () => {
     testSite.forEach(item => {
         it(`get ${item.url} title`, (done) => {
-            console.log(item.url);
             getPageContent(item).then((result) => {
                 return Promise.try(() => {
                     let $ = cheerio.load(result.html, {
