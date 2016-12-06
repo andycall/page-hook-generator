@@ -481,6 +481,11 @@ module.exports = [
     title: '#main_title',
     content: '#artibody'
   },
+  {
+    url: 'http://tech.hexun.com/2016-12-06/187208491.html',
+    title: '.articleName  h1',
+    content: '.art_contextBox'
+  }
   // {
   //     url: 'http://po.baidu.com/feed/share?isBdboxShare=1&context=%7B%22nid%22%3A%22news_4166875709842481512%22%2C%22ext%22%3A%7B%22ac%22%3A0%2C%22attention%22%3A%22%5Cu5e0c%5Cu62c9%5Cu91cc%22%2C%22attention_alias%22%3A%22%5Cu5e0c%5Cu62c9%5Cu91cc%22%2C%22attention_id%22%3A712%2C%22category%22%3A1%2C%22city%22%3A%22%5Cu5317%5Cu4eac%5Cu5e02%22%2C%22cs%22%3A%221808824111+4080036811%22%2C%22district%22%3A%22%5Cu6d77%5Cu6dc0%5Cu533a%22%2C%22mark%22%3A0%2C%22mark_rec%22%3A0%2C%22mthid%22%3A%221550967114697725%22%2C%22province%22%3A%22%5Cu5317%5Cu4eac%5Cu5e02%22%2C%22rec_src%22%3A%5B2%5D%2C%22recall_type%22%3A3%2C%22score%22%3A6.2924723832226%2C%22srccat%22%3A4%2C%22srcid%22%3A80001%2C%22tag%22%3A0%2C%22ua%22%3A%22750_1334_iphone_8.0.1.9_0%22%2C%22user_profile%22%3A0%2C%22ut%22%3A%22iPhone7%2C2_10.1.1%22%7D%2C%22sid%22%3A%22184_338-181_332-156_266-1000119_314%22%2C%22sourceFrom%22%3A%22bjh%22%2C%22url%22%3A%22http%3A%5C%2F%5C%2Fbaijiahao.baidu.com%5C%2Fs%3Fid%3D1551607289498850%22%7D',
   //     title: '.title',
