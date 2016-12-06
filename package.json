@@ -4,8 +4,26 @@
   "description": "auto get page selector of page title, content and publishTime",
   "main": "index.js",
   "scripts": {
-    "test": "npm test"
+    "test": "mocha test/generator.test.js -t 10000"
   },
   "author": "andycall",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "bluebird": "^3.4.6",
+    "detect-character-encoding": "^0.2.1",
+    "iconv-lite": "^0.4.15",
+    "jsdom": "^9.8.3",
+    "mocha": "^3.2.0",
+    "request": "^2.79.0"
+  },
+  "dependencies": {
+    "cheerio": "^0.22.0",
+    "levenshtein": "^1.0.5",
+    "lodash.filter": "^4.6.0",
+    "lodash.foreach": "^4.5.0",
+    "lodash.isarray": "^4.0.0",
+    "lodash.isstring": "^4.0.1",
+    "lodash.map": "^4.6.0",
+    "lodash.sortby": "^4.7.0"
+  }
 }
