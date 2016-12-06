@@ -3,7 +3,7 @@ let level2 = require('./src/level2');
 let cheerio = require('cheerio');
 
 module.exports = html => {
-	let $ = cheerio.load(result.html, {
+	let $ = cheerio.load(html, {
 		decodeEntities: false,
 		normalizeWhitespace: true
 	});
