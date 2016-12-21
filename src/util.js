@@ -4,13 +4,13 @@
 
 let isString = require('lodash.isstring');
 let isArray = require('lodash.isarray');
-let each = require('lodash.foreach');
+let each = require('lodash.forEach');
 let Levenshtein = require('levenshtein');
 
 class GeneratorUtil {
     constructor(options) {
         this.$ = options.$;
-        this.hasDisplayNone = /\s?display\s?:\s?none\s?;|visibility\s?:\s?hidden\s?;/;
+        this.hasDisplayNone = /\s?display\s?:\s?none\s?;?|visibility\s?:\s?hidden\s?;?/;
         this.isValidBlock = /^(body|div|section|h[1-5]|p|span|br|input|strong|img|em|i|b|font|article|header)$/;
         this.notDeepThroughBlock = /^(ul|li|ol)$/
         this.dateReg = /(20\d{2})\s{0,2}[-/\u5e74]\s{0,2}(\d{1,2})\s{0,2}[-/\u6708]\s{0,2}?(\d{1,2})\s{0,2}\u65e5?(?:\s{0,3}(\d{1,2})\s{0,2}(?:[:\u65f6]\s{0,2}(\d{1,2})\s{0,2}(?:[:\u5206]\s{0,2}(\d{1,2})\s{0,2}\u79d2?)?)?)?/

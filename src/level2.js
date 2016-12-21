@@ -229,10 +229,17 @@ class Level2 extends GeneratorUtil {
         let bestParent = null;
         let bestScore = 0;
         let $ = this.$;
+        let self = this;
 
         let pureParents = this.filterNestedParent(rawParents);
 
         each(pureParents, parent => {
+            if (self.hasDisplayNone.test(parent.attribs.style)) {
+                return;
+            }
+
+            console.log(parent);
+
             let textScore = parent.texts.reduce((total, element) => {
                 let textLength = this.getTextElement(element, {
                     toStr: true
@@ -280,6 +287,10 @@ module.exports = function ($) {
 
     let rawParents = level2.searchForParents(sortedInfo, treeInfo);
     let bestParent = level2.findBestParents(rawParents);
+
+    if (!bestParent) {
+        throw new Error('can not find parents');
+    }
 
     return level2.getNodeDriver(bestParent);
 };
