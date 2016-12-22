@@ -1,6 +1,6 @@
 {
   "name": "page-hook-generator",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "auto get page selector of page title, content and publishTime",
   "main": "index.js",
   "scripts": {
