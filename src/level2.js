@@ -238,8 +238,6 @@ class Level2 extends GeneratorUtil {
                 return;
             }
 
-            console.log(parent);
-
             let textScore = parent.texts.reduce((total, element) => {
                 let textLength = this.getTextElement(element, {
                     toStr: true
