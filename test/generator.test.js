@@ -82,9 +82,9 @@ describe('Auto Get Title Hook', () => {
                 return Promise.try(() => {
                     let scanResult = generator(result.html);
 
-                    // level3($, title, content);
                     assert.equal(result.title, scanResult.title);
                     assert.equal(result.content, scanResult.content);
+                    // assert.equal(result.date, scanResult.date);
                 }).then(() => {
                     done();
                 }).catch(err => {

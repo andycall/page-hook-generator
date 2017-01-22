@@ -99,9 +99,10 @@ class Level1 extends GeneratorUtil {
                 minimum = percentage;
 
                 titleElement = ele;
-                titleSelector = self.getNodeDriver(ele.parent);
             }
         });
+
+        titleSelector = self.getNodeDriver(titleElement.parent);
 
         this.searchDateFromTitleNearBy(titleElement);
 

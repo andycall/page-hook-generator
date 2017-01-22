@@ -26,12 +26,8 @@ class GeneratorUtil {
         return distance / totalLength;
     }
 
-    getTitleClassName(className) {
+    getTitleClassName(className, unique = true) {
         let $ = this.$;
-
-        if (!/\s/.test(className)) {
-            return className;
-        }
 
         let classNames = className.split(' ');
 
@@ -40,22 +36,19 @@ class GeneratorUtil {
                 return false;
             }
 
-            return $('.' + item).length === 1
+            return unique ? $('.' + item).length === 1 : true;
         });
 
         return classNames;
     }
 
-    getNodeDriver(node) {
-        let $ = this.$;
-        let nodeTagName = node.name;
-        let nodeParent = node.parent;
-        let selector = null;
+    getNodeSelector(node, unique = true) {
+        let selector = '';
 
         if (node.attribs.id) {
             selector = `#${node.attribs.id}`
         } else if (node.attribs.class) {
-            let uniqueClass = this.getTitleClassName.call(this, node.attribs.class);
+            let uniqueClass = this.getTitleClassName(node.attribs.class, unique);
 
             if (isString(uniqueClass)) {
                 selector = `.${uniqueClass}`;
@@ -64,6 +57,16 @@ class GeneratorUtil {
             }
         }
 
+
+        return selector;
+    }
+
+    getNodeDriver(node) {
+        let $ = this.$;
+        let nodeTagName = node.name;
+        let nodeParent = node.parent;
+        let selector = this.getNodeSelector(node);
+        let rawSelector = this.getNodeSelector(node, false);
         let selectorPath = [];
 
         while (!selector && nodeParent) {
@@ -72,12 +75,12 @@ class GeneratorUtil {
             }
 
             if (nodeParent.attribs.class) {
-                let uniqueClass = this.getTitleClassName.call(this, nodeParent.attribs.class);
+                let uniqueClass = this.getTitleClassName(nodeParent.attribs.class);
 
                 if (isString(uniqueClass)) {
-                    selector = `.${uniqueClass} ${selectorPath.join(' ')} ${nodeTagName}`
+                    selector = `.${uniqueClass} ${selectorPath.join(' ')} ${nodeTagName}${rawSelector}`
                 } else if (isArray(uniqueClass) && uniqueClass.length > 0) {
-                    selector = `.${uniqueClass[0]} ${selectorPath.join(' ')} ${nodeTagName}`
+                    selector = `.${uniqueClass[0]} ${selectorPath.join(' ')} ${nodeTagName}${rawSelector}`
                 }
             }
 

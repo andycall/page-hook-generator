@@ -20,14 +20,14 @@ module.exports = [
     {
         url: 'http://news.ifeng.com/a/20161120/50286000_0.shtml',
         title: '.yc_tit  h1',
-        content: '.yc_con_txt',
+        content: '.yc_con_l  div.yc_con_txt',
         date: '2016-11-20 07:04'
     },
     {
         url: 'http://news.ifeng.com/a/20161126/50319519_0.shtml',
         title: '#artical_topic',
         content: '#main_content',
-        date: '2016-12-03 20:20:26'
+        date: '2016-11-26 02:51:00'
     },
     {
         url: 'http://www.toutiao.com/a6354832278623879426/',
@@ -91,7 +91,7 @@ module.exports = [
     },
     {
         url: 'http://finance.qq.com/a/20161126/019278.htm',
-        title: '.hd  h1',
+        title: '.qq_article div h1',
         content: '#Cnt-Main-Article-QQ',
         date: '2016-11-26 19:59'
     },
@@ -162,7 +162,7 @@ module.exports = [
     },
     {
         url: "http://news.qq.com/a/20161128/001898.htm",
-        title: '.hd  h1',
+        title: '.qq_article div h1',
         content: '#Cnt-Main-Article-QQ'
     },
     {
@@ -222,7 +222,7 @@ module.exports = [
     },
     {
         url: "http://news.qq.com/a/20161128/031121.htm",
-        title: ".hd  h1",
+        title: ".qq_article div h1",
         content: "#Cnt-Main-Article-QQ"
     },
     {
@@ -232,7 +232,7 @@ module.exports = [
     },
     {
         url: 'http://news.qq.com/a/20161203/004294.htm',
-        title: '.hd  h1',
+        title: '#C-Main-Article-QQ div h1',
         content: '#Cnt-Main-Article-QQ'
     },
     {
@@ -287,7 +287,7 @@ module.exports = [
     },
     {
         url: 'http://tech.qq.com/a/20161202/036801.htm',
-        title: '.hd  h1',
+        title: '.mod-left div h1',
         content: '#Cnt-Main-Article-QQ'
     },
     {
@@ -412,13 +412,8 @@ module.exports = [
     },
     {
         url: 'http://ent.qq.com/a/20161203/012450.htm',
-        title: '.hd  h1',
+        title: '.qq_article div h1',
         content: '#Cnt-Main-Article-QQ'
-    },
-    {
-        url: 'http://www.xinwenge.net/know/news/950565a4.html',
-        title: '.text  h1',
-        content: '.top30'
     },
     {
         url: 'http://mini.eastday.com/a/161202222428590.html',
