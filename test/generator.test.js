@@ -1,17 +1,18 @@
 let assert = require('assert');
 let request = require('request');
 let Promise = require('bluebird');
-let level1 = require('../src/level1');
-let level2 = require('../src/level2');
+let generator = require('../index');
 let iconv = require('iconv-lite');
 let jsdom = require('jsdom');
 let cheerio = require('cheerio');
 let _jsdom = jsdom.jsdom;
 let testSite = require('./testCase');
+let devSite = require('./devCase');
 let os = require('os');
-
 let osType = os.type();
 let detectCharacterEncoding;
+
+let args = process.argv.slice(2);
 
 if (osType != 'Windows_NT') {
     detectCharacterEncoding = require('detect-character-encoding');
@@ -68,24 +69,22 @@ function getPageContent(item) {
 }
 
 describe('Auto Get Title Hook', () => {
+    if (process.env.DEBUG === 'dev') {
+        testSite = devSite;
+    }
+    else if (process.env.DEBUG === 'release') {
+        testSite = devSite.concat(testSite);
+    }
+
     testSite.forEach(item => {
         it(`get ${item.url} title`, (done) => {
             getPageContent(item).then((result) => {
                 return Promise.try(() => {
-                    let $ = cheerio.load(result.html, {
-                        decodeEntities: false,
-                        normalizeWhitespace: true
-                    });
+                    let scanResult = generator(result.html);
 
-                    let level1Result = level1($);
-                    let contentSelector = level2($);
-                    let titleSelector = level1Result.title;
-                    let date = level1Result.date;
-
-                    console.log(date);
                     // level3($, title, content);
-                    assert.equal(titleSelector, result.title);
-                    assert.equal(contentSelector, result.content);
+                    assert.equal(result.title, scanResult.title);
+                    assert.equal(result.content, scanResult.content);
                 }).then(() => {
                     done();
                 }).catch(err => {

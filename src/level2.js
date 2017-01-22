@@ -119,7 +119,14 @@ class Level2 extends GeneratorUtil {
 
             if (children && children.length > 0) {
                 each(children, (item) => {
-                    let name = item.name;
+                    let name;
+
+                    if (tagName === 'text') {
+                        name = item.type;
+                    }
+                    else {
+                        name = item.name;
+                    }
 
                     if (name == tagName) {
                         elements.push(item);
@@ -143,21 +150,15 @@ class Level2 extends GeneratorUtil {
             let floor = info.key;
             let count = info.value;
 
-            let pElement = filter(treeInfo[floor], treeNode => {
-                return treeNode.name === 'p'
+            let rawElement = filter(treeInfo[floor], treeNode => {
+                return treeNode.name === 'p' || treeNode.name === 'br';
             });
 
-            let commonParents = getCommonParent(pElement);
+            let commonParents = getCommonParent(rawElement);
 
             // 如果有不止一个父级，说明是分布在树的多个根节点下面，要分开对待
             commonParents = commonParents.map(element => {
-                let strongElement = self.findDepth(element, 'strong', 3);
-                let iElement = self.findDepth(element, 'i', 3);
-                let emElement = self.findDepth(element, 'em', 3);
-                let spanElement = self.findDepth(element, 'span', 3);
-                let pElement = self.findDepth(element, 'p', 3);
-
-                let textElement = strongElement.concat(iElement, emElement, spanElement, pElement);
+                let textElement = self.findDepth(element, 'text', 1);
                 let imgElement = self.findDepth(element, 'img', 3);
 
                 element.texts = textElement;

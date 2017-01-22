@@ -10,9 +10,11 @@
   "license": "MIT",
   "devDependencies": {
     "bluebird": "^3.4.6",
+    "debug": "^2.6.0",
     "detect-character-encoding": "^0.2.1",
     "iconv-lite": "^0.4.15",
     "jsdom": "^9.8.3",
+    "json-format": "^1.0.0",
     "mocha": "^3.2.0",
     "request": "^2.79.0"
   },
